@@ -1,6 +1,8 @@
 <h1>ExpNo 5 : Implement Simple Hill Climbing Algorithm</h1> 
-<h3>Name:             </h3>
-<h3>Register Number:             </h3>
+<h3>Name: Nanthikashree      </h3>
+<h3>Register Number:  212225040274           </h3>
+
+# Date: 26/10/2026
 <H3>Aim:</H3>
 <p>Implement Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration </p>
 <h2> Theory: </h2>
@@ -26,6 +28,54 @@ Feedback is provided in terms of heuristic function
 </li>
 </ol>
 
+# Program
+
+```
+import random
+import string
+
+def generate_random_solution(answer):
+    l = len(answer)
+    return [random.choice(string.printable) for _ in range(l)]
+
+def evaluate(solution, answer):
+    print(solution)
+    target = list(answer)
+    diff = 0
+
+    for i in range(len(target)):
+        s = solution[i]
+        t = target[i]
+        diff += abs(ord(s) - ord(t))
+
+    return diff
+
+def mutate_solution(solution):
+    ind = random.randint(0, len(solution) - 1)
+    solution[ind] = random.choice(string.printable)
+    return solution
+
+def SimpleHillClimbing():
+    answer = input("Enter the String: ")
+    best = generate_random_solution(answer)
+    best_score = evaluate(best, answer)
+
+    while True:
+        print("Score:", best_score, "Solution:", "".join(best))
+
+        if best_score == 0:
+            print("\nTarget String Found!")
+            break
+
+        new_solution = mutate_solution(list(best))
+        score = evaluate(new_solution, answer)
+
+        if score < best_score:
+            best = new_solution
+            best_score = score
+
+SimpleHillClimbing()
+```
 </p>
 <hr>
 <h3> Steps Applied:</h3>
@@ -59,3 +109,16 @@ Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 0  Solution :  Artificial Intelligence<br>
+
+# OUTPUT:
+
+<img width="1022" height="342" alt="image" src="https://github.com/user-attachments/assets/8da865ed-0446-4983-816a-30a8af1a6285" />
+
+<img width="1002" height="332" alt="image" src="https://github.com/user-attachments/assets/62b67323-c0f9-4ee5-a699-8aa4c15baa9d" />
+
+<img width="1073" height="330" alt="image" src="https://github.com/user-attachments/assets/0435e9d5-1b52-4d0f-994c-cb95b5d4e2f9" />
+
+<img width="1115" height="332" alt="image" src="https://github.com/user-attachments/assets/b6e3d81f-0bc9-4ed8-91a9-57db643adbb1" />
+
+# RESULT:
+Thus Implemented Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration
